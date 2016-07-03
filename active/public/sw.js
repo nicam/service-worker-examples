@@ -2,6 +2,7 @@ const version = 'v2';
 
 this.addEventListener('install', function(event) {
   console.log('install');
+  // self.skipWaiting();
   event.waitUntil(
     caches.open(version).then(function(cache) {
       return cache.addAll([
@@ -22,6 +23,7 @@ this.addEventListener("activate", function(e) {
   var socket = io.connect('http://localhost:3000', {
       jsonp: false
   });
+
   setInterval(function () {
     socket.emit('timer', "3PO!, come in 3P0! shut down the gargabe mashers!");
   }, 3000);
@@ -78,4 +80,16 @@ this.addEventListener('fetch', function(event) {
       });
     })
   );
+});
+
+self.addEventListener('push', function(event) {
+  console.log('Push message received', event);
+  var title = 'Push message';
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body: 'The Message',
+      icon: 'images/trooper.jpg',
+      tag: 'my-tag'
+    }));
+  // TODO
 });
