@@ -1,8 +1,10 @@
 this.addEventListener('install', function(event) {
   console.log('install');
+  event.waitUntil(self.skipWaiting());
 });
 
-this.addEventListener("activate", function(e) {
+this.addEventListener("activate", function(event) {
+  event.waitUntil(self.clients.claim());
   console.log('activated');
 
   importScripts('/socket.io/socket.io.js');
