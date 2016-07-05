@@ -1,3 +1,11 @@
+this.addEventListener('install', function(event) {
+  event.waitUntil(self.skipWaiting());
+});
+
+this.addEventListener('activate', function(event) {
+  event.waitUntil(self.clients.claim());
+});
+
 this.addEventListener('message', function (event) {
   console.log("Got message in SW", event.data);
 
