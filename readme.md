@@ -33,7 +33,7 @@ Shows how the service worker can receive push messages from GCM.
 Open <a href="http://localhost:3002">http://localhost:3002</a>
 
 
-#Demo 3
+#Demo 4
 Shows how the service worker can communicate with it's tabs.
 
 	cd message
