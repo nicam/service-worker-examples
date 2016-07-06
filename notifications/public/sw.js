@@ -1,11 +1,9 @@
-const version = 'v2';
-
 this.addEventListener('install', function(event) {
-  console.log('install');
+  event.waitUntil(self.skipWaiting());
 });
 
-this.addEventListener("activate", function(e) {
-  console.log('activated');
+this.addEventListener("activate", function(event) {
+  event.waitUntil(self.clients.claim());
 });
 
 this.addEventListener('push', function(event) {
